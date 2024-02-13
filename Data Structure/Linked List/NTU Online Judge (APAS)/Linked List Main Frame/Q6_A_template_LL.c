@@ -89,6 +89,26 @@ int main()
 int moveMaxToFront(ListNode **ptrHead)
 {
     /* add your code here */
+	ListNode *max = *ptrHead;
+	ListNode *temp = *ptrHead;
+	ListNode *pre;
+	ListNode *max_pre;
+
+	while (temp != NULL)
+	{
+		if (temp->item > max->item){
+			max = temp;
+			max_pre = pre;
+		}
+		pre = temp;
+		temp = temp->next;
+	}
+
+	max_pre->next = max->next;
+	max->next = *ptrHead;
+	*ptrHead = max;
+
+	return 0;
 }
 
 //////////////////////////////////////////////////////////////////////////////////
